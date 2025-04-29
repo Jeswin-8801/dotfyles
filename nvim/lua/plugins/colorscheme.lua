@@ -12,7 +12,7 @@ return {
           light = "latte",
           dark = "mocha",
         },
-        transparent_background = false,
+        transparent_background = true,
         highlight_overrides = {
           mocha = function(color)
             return {
@@ -48,8 +48,8 @@ return {
             surface0 = "#20202b", -- Code Block highlight default, Current Line Highlight
             overlay2 = "#737774", -- Comments color
             overlay1 = "#838ba7",
-            base = "#121417", -- editor background, File Explorer search border surround
-            mantle = "#131516", -- Background colors for: File Explorer, Lazy Pannel, Floating Windows, Status bar bottom
+            base = "#0a0b16", -- editor background, File Explorer search border surround
+            mantle = "#101014", -- Background colors for: File Explorer, Lazy Pannel, Floating Windows, Status bar bottom
             crust = "#1F2131", -- File Explorer and Editor Line separator
             mauve = "#916CBD",
             mint = "#B5FCCD",
@@ -107,6 +107,7 @@ return {
     lazy = true,
     name = "eldritch",
     opts = {
+      transparent_background = true,
       -- Overriding colors globally using a definitions table
       on_colors = function(global_colors)
         -- Define all color overrides in a single table
