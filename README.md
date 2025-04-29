@@ -1,6 +1,6 @@
 <div align="center">
   
-# <img src="https://github.com/user-attachments/assets/c8e7d446-324a-430e-8d15-b2cac2e9fba0" alt="docker-svgrepo-com" style="width: 35px; height: 35px;"> dotfyles
+# <img src="https://github.com/user-attachments/assets/93df6e6d-31d1-486c-8dcb-557169d54139" alt="docker-svgrepo-com" style="width: 35px; height: 35px;"> &nbsp; dotfyles
 
 </div>
 
