@@ -2,7 +2,8 @@
 
 All my dotfile configs for WSL
 
-> [!Note] > `fish` set as the default shell.
+> [!Note]
+> `fish` set as the default shell.
 
 ![image](https://github.com/user-attachments/assets/8c84b7f0-27db-4ba9-922c-676ad4c32b45)
 
