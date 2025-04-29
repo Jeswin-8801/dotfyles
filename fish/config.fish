@@ -87,3 +87,6 @@ set -x JAVA_HOME /usr/lib/jvm/java-21-openjdk-amd64
 set -x MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | batcat -p -lman'"
 # Zellij Runner Banners directory
 set -x ZELLIJ_RUNNER_BANNERS_DIR ~/.config/zellij/banners
+
+# Zoxide
+zoxide init fish | source
