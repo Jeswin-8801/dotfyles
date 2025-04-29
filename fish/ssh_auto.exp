@@ -1,0 +1,16 @@
+#!/usr/bin/expect -f
+
+# Get the arguments
+set user_host [lindex $argv 0]
+set password [lindex $argv 1]
+
+# Start the SSH session
+spawn ssh $user_host
+
+# Handle the password prompt
+expect "password:"
+send "$password\r"
+
+# Interact with the SSH session
+interact
+

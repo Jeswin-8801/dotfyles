@@ -1,0 +1,47 @@
+gui:
+  border: "rounded" # 'rounded' | 'single' | 'double' | 'hidden'
+  theme:
+    activeBorderColor:
+      - "#33FF77"
+      - bold
+    inactiveBorderColor:
+      - "#fae9ff"
+    selectedLineBgColor:
+      - "#3868B0"
+    optionsTextColor:
+      - "#3868B0"
+  returnImmediately: false
+  wrapMainPanel: true
+  # Side panel width as a ratio of the screen's width
+  sidePanelWidth: 0.333
+  # Determines whether we show the bottom line (the one containing keybinding
+  # info and the status of the app).
+  showBottomLine: true
+  # When true, increases vertical space used by focused side panel,
+  # creating an accordion effect
+  expandFocusedSidePanel: true
+  # Determines which screen mode will be used on startup
+  screenMode: "normal" # one of 'normal' | 'half' | 'fullscreen'
+  # Determines the style of the container status and container health display in the
+  # containers panel. "long": full words (default), "short": one or two characters,
+  # "icon": unicode emoji.
+  containerStatusHealthStyle: "icon"
+
+logs:
+  timestamps: true
+
+stats:
+  graphs:
+    - caption: CPU (%)
+      statPath: DerivedStats.CPUPercentage
+      color: "#3868B0"
+    - caption: Memory (%)
+      statPath: DerivedStats.MemoryPercentage
+      color: "#33FF77"
+
+customCommands:
+  containers:
+    - name: All logs to lnav
+      attach: true
+      command: lnav docker://{{ .Container.ID }}
+      serviceNames: []
