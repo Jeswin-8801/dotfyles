@@ -7,11 +7,15 @@ All my dotfile configs for WSL
 
 ![image](https://github.com/user-attachments/assets/8c84b7f0-27db-4ba9-922c-676ad4c32b45)
 
+![image](https://github.com/user-attachments/assets/0ba790b2-c882-4c20-9c3a-2c9b20ab1d69)
+
 ![image](https://github.com/user-attachments/assets/a3479b1a-eb5e-4aea-98cd-3a6736b07fdb)
 
 ![image](https://github.com/user-attachments/assets/a048593d-7dd2-4c37-861f-645dcfdbc815)
 
 ![image](https://github.com/user-attachments/assets/58e812ba-8662-4f78-93a3-85cc1fb2cf98)
+
+![image](https://github.com/user-attachments/assets/9ddf8bae-4447-4474-acef-c0cb9ab8fdd9)
 
 ## Installed Packages
 
@@ -32,7 +36,6 @@ All my dotfile configs for WSL
 - duf
 - ripgrep
 - cht.sh
-- tcolor
 
 > Programming Languages and Additional Packages
 >
@@ -42,6 +45,8 @@ All my dotfile configs for WSL
 > - tcolor
 > - zellij-runner
 > - spring-initializr-cli
+> - docker-volume-snapshot
+> - dysk
 
 _Checkout `install.sh` for all packages_
 
