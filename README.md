@@ -1,4 +1,8 @@
-# dotfyles
+<div align="center">
+  
+# <img src="https://github.com/user-attachments/assets/c8e7d446-324a-430e-8d15-b2cac2e9fba0" alt="docker-svgrepo-com" style="width: 35px; height: 35px;"> dotfyles
+
+</div>
 
 All my dotfile configs for WSL
 
