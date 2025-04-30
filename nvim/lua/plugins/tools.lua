@@ -64,7 +64,16 @@ return {
       -- NOTE: The main '<leader>sr' keymap is configured in 'config/keymaps.lua'
       {
         "<leader>srr",
-        "<cmd>GrugFar<CR>",
+        function()
+          local grug = require("grug-far")
+          local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+          grug.open({
+            transient = true,
+            prefills = {
+              filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+            },
+          })
+        end,
         mode = { "n", "v" },
         desc = "Search/Replace in all files",
       },

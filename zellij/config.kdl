@@ -330,7 +330,7 @@ load_plugins {
 // Default: default
 // 
 // theme "dracula"
-theme "catppuccin-mocha"
+theme "ansi"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -353,7 +353,6 @@ default_layout "compact"
  
 // The folder in which Zellij will look for layouts
 // (Requires restart)
-// 
 layout_dir "/home/jeswins/.config/zellij/layouts"
  
 // The folder in which Zellij will look for themes

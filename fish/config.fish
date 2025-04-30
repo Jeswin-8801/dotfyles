@@ -1,6 +1,6 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    oh-my-posh init fish --config ~/.cache/oh-my-posh/themes/emodipt-extend.omp.json | source
+    oh-my-posh init fish --config /home/jeswins/GitHub/dotfyles/oh-my-posh/themes/eva.omp.json | source
 end
 
 # Aliases
@@ -67,7 +67,7 @@ set fish_greeting
 # Show neofetch on Terminal Startup (only if the user has started a session and not processes like ftp or ssh)
 if status --is-interactive
     # neofetch --source .config/neofetch/config
-    neofetch --ascii_distro Windows
+    neofetch --caca '/home/jeswins/GitHub/dotfyles/Windows Terminal/evangelion.jpg' --size 575
 end
 
 # pnpm
