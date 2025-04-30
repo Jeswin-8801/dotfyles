@@ -20,7 +20,7 @@ All my dotfile configs for WSL on Windows Terminal.
 
 ![image](https://github.com/user-attachments/assets/12098082-9958-4e78-be54-0f563c4f10f1)
 
-![image](https://github.com/user-attachments/assets/9fcbd7dc-85ad-45f5-acd5-86b5925cd9e3)
+![image](https://github.com/user-attachments/assets/204065bf-059a-46e1-a3a1-3f442ae4e7eb)
 
 ![image](https://github.com/user-attachments/assets/35edfaf9-7ca3-49e3-9b46-7d381810ed56)
 
