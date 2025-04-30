@@ -63,7 +63,7 @@
           "type": "path"
         },
         {
-          "foreground": "#f7bb2a",
+          "foreground": "#b8ff75",
           "foreground_templates": [
             "{{ if or (.Working.Changed) (.Staging.Changed) }}#e6770b{{ end }}",
             "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}",
