@@ -12,17 +12,25 @@ All my dotfile configs for WSL on Windows Terminal.
 >
 > `fish` set as the default shell.
 
-![image](https://github.com/user-attachments/assets/8c84b7f0-27db-4ba9-922c-676ad4c32b45)
+![image](https://github.com/user-attachments/assets/e5bf7dda-ac24-48cc-8609-bb4af43e5476)
 
-![image](https://github.com/user-attachments/assets/0ba790b2-c882-4c20-9c3a-2c9b20ab1d69)
+![image](https://github.com/user-attachments/assets/cd2be0ac-5f92-4003-a975-3e7e94cbdfc0)
 
-![image](https://github.com/user-attachments/assets/a3479b1a-eb5e-4aea-98cd-3a6736b07fdb)
+![image](https://github.com/user-attachments/assets/fc910974-0fbb-400b-9867-d2b8f7976e56)
 
-![image](https://github.com/user-attachments/assets/a048593d-7dd2-4c37-861f-645dcfdbc815)
+![image](https://github.com/user-attachments/assets/12098082-9958-4e78-be54-0f563c4f10f1)
 
-![image](https://github.com/user-attachments/assets/58e812ba-8662-4f78-93a3-85cc1fb2cf98)
+![image](https://github.com/user-attachments/assets/9fcbd7dc-85ad-45f5-acd5-86b5925cd9e3)
 
-![image](https://github.com/user-attachments/assets/9ddf8bae-4447-4474-acef-c0cb9ab8fdd9)
+![image](https://github.com/user-attachments/assets/35edfaf9-7ca3-49e3-9b46-7d381810ed56)
+
+> [!Important]
+> After Cloning make sure that you update the paths configured which can be listed using the command below.
+>
+> Make sure you have `ripgrep` installed before running:
+> ```fish
+> rg "[\/\\\\]+home[\/\\\\]+jeswins"
+> ```
 
 ## Installed Packages
 
