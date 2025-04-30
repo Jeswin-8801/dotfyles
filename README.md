@@ -12,7 +12,7 @@ All my dotfile configs for WSL on Windows Terminal.
 >
 > `fish` set as the default shell.
 
-![image](https://github.com/user-attachments/assets/e5bf7dda-ac24-48cc-8609-bb4af43e5476)
+![image](https://github.com/user-attachments/assets/67b0ce5c-84ce-48f7-800e-fcea824c8476)
 
 ![image](https://github.com/user-attachments/assets/cd2be0ac-5f92-4003-a975-3e7e94cbdfc0)
 
