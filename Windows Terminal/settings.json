@@ -79,8 +79,8 @@
       },
       {
         "adjustIndistinguishableColors": "never",
-        "backgroundImage": "\\\\wsl.localhost\\Ubuntu\\home\\jeswins\\GitHub\\dotfyles\\Windows Terminal\\eva_13.jpeg",
-        "backgroundImageOpacity": 0.07,
+        "backgroundImage": "\\\\wsl.localhost\\Ubuntu\\home\\jeswins\\GitHub\\dotfyles\\Windows Terminal\\eva_01_retro_blurred.png",
+        "backgroundImageOpacity": 0.13,
         "colorScheme": "Tango Dark",
         "cursorShape": "emptyBox",
         "experimental.retroTerminalEffect": false,
@@ -93,6 +93,7 @@
         "intenseTextStyle": "none",
         "name": "Ubuntu",
         "opacity": 100,
+        "padding": "5",
         "scrollbarState": "hidden",
         "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
         "useAcrylic": false
