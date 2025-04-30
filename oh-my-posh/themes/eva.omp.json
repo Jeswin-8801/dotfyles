@@ -2,44 +2,6 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
     {
-      "alignment": "right",
-      "segments": [
-        {
-          "foreground": "#8bd450",
-          "foreground_templates": ["{{ if gt .Code 0 }}#E06C75{{ end }}"],
-          "properties": {
-            "style": "roundrock",
-            "always_enabled": true
-          },
-          "style": "diamond",
-          "template": "{{ .FormattedMs }}",
-          "type": "executiontime"
-        },
-        {
-          "foreground": "#F3C267",
-          "style": "plain",
-          "template": " <#757575,>|</> {{ .Name }}",
-          "type": "shell"
-        },
-        {
-          "foreground": "#ff8080",
-          "style": "plain",
-          "template": " <#757575,>as</> root",
-          "type": "root"
-        },
-        {
-          "foreground": "#734f9a",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "style": "plain",
-          "template": " <#757575,>|</> {{ .CurrentDate | date .Format }} ",
-          "type": "time"
-        }
-      ],
-      "type": "prompt"
-    },
-    {
       "alignment": "left",
       "newline": true,
       "segments": [
@@ -98,6 +60,44 @@
           "foreground_templates": ["{{ if gt .Code 0 }}#E06C75{{ end }}"],
           "template": " x{{ reason .Code }}",
           "trailing_diamond": "\ue0b4"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "foreground": "#b8ff75",
+          "foreground_templates": ["{{ if gt .Code 0 }}#E06C75{{ end }}"],
+          "properties": {
+            "style": "roundrock",
+            "always_enabled": true
+          },
+          "style": "diamond",
+          "template": "{{ .FormattedMs }}",
+          "type": "executiontime"
+        },
+        {
+          "foreground": "#2de0a7",
+          "style": "plain",
+          "template": " <#757575,>|</> {{ .Name }}",
+          "type": "shell"
+        },
+        {
+          "foreground": "#ff8080",
+          "style": "plain",
+          "template": " <#757575,>as</> root",
+          "type": "root"
+        },
+        {
+          "foreground": "#734f9a",
+          "properties": {
+            "time_format": "15:04:05"
+          },
+          "style": "plain",
+          "template": " <#757575,>|</> {{ .CurrentDate | date .Format }} ",
+          "type": "time"
         }
       ],
       "type": "prompt"

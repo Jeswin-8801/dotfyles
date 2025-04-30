@@ -67,7 +67,7 @@ set fish_greeting
 # Show neofetch on Terminal Startup (only if the user has started a session and not processes like ftp or ssh)
 if status --is-interactive
     # neofetch --source .config/neofetch/config
-    neofetch --jp2a '/home/jeswins/.config/neofetch/eva_01_retro_cropped.jpg' --size 875
+    neofetch --jp2a '/home/jeswins/.config/Images/eva_01_retro_cropped.jpg' --size 875
 end
 
 # pnpm

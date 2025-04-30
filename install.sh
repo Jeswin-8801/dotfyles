@@ -194,5 +194,8 @@ sudo chmod +x /usr/local/bin/docker-volume-snapshot
 # Copy and paste all dotfiles
 rsync -av --exclude='install.sh' --exclude='README.md' * ~/.config
 
+# Set Timezone
+timedatectl set-timezone Asia/Kolkata
+
 # Reloading terminal
 source ~/.config/fish/config.fish
