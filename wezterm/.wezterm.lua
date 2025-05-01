@@ -1,8 +1,14 @@
 local wezterm = require("wezterm")
+local mux = wezterm.mux
 
 wezterm.on("gui-startup", function()
-	local tab, pane, window = wezterm.mux.spawn_window({})
-	window:gui_window():maximize()
+	local screen = wezterm.gui.screens().active
+	local tab, pane, window = mux.spawn_window({})
+
+	local width = screen.width * 0.85
+	local height = screen.height * 0.85
+	window:gui_window():set_position((screen.width - width) / 2, (screen.height - height) * 0.9 / 2)
+	window:gui_window():set_inner_size(width, height)
 end)
 
 return {
@@ -47,6 +53,7 @@ return {
 			action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),
 		},
 	},
+	hide_mouse_cursor_when_typing = true,
 	-- Mouse bindings to mimc Windows Terminal
 	mouse_bindings = {
 		-- Ctrl-click will open the link under the mouse cursor

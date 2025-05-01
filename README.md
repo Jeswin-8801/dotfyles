@@ -1,66 +1,85 @@
 <div align="center">
 
-# <img src="https://github.com/user-attachments/assets/93df6e6d-31d1-486c-8dcb-557169d54139" alt="docker-svgrepo-com" style="width: 35px; height: 35px;"> &nbsp; dotfyles
+# <img src="https://github.com/user-attachments/assets/93df6e6d-31d1-486c-8dcb-557169d54139" alt="docker-svgrepo-com" style="width: 25px; height: 25px;"> &nbsp; dotfyles
 
 </div>
 
-All my dotfile configs for WSL on Windows Terminal.
-
-> Refer `win-terminal/settings.json` for Windows Terminal settings (Modify paths if necessary)
-
 > [!Note]
 >
-> - `wezterm` config is intended to be used on a windows system.
-> - All colorschemes and themes are specifically set according to the theme set in the `wezterm` config.
-> - `fish` set as the default shell.
+> All colorschemes and themes are specifically set according to the theme set in the `wezterm` config.
+
+- `wezterm` config is intended to be used on a windows system.
+- `fish` set as the default shell.
 
 > [!Important]
 >
-> After Cloning make sure that you update the paths configured which can be listed using the command below.
->
-> Make sure you have `ripgrep` installed before running:
+> Make sure to update the paths configured which can be listed using the command below.
 >
 > ```fish
 > rg "[\/\\\\]+home[\/\\\\]+jeswins" --hidden
 > ```
 
+> Refer `win-terminal/settings.json` for Windows Terminal settings in case you prefer using it instead
+>
+> (Modify paths to images if necessary)
+
 ## Installed Packages
 
-- btop
+#### UI
+
 - oh-my-posh
-- lnav
-- superfile
-- lazygit
-- lazydocker
-- neovim
-- zellij
 - neofetch
-- batcat
-- delta
+
+#### Utilities
+
+- btop
+- superfile
+- lnav
 - lsd
+- duf
+- batcat
 - pandoc
 - fzf
-- duf
-- ripgrep
-- cht.sh
+- dysk
+- tcolor (_color picker_)
+- zoxide
+- fend (_beefed up cli calculator_)
 
-> Programming Languages and Additional Packages
+#### Git
+
+- lazygit
+- delta
+
+#### Help
+
+- cht.sh
+- tldr
+
+#### Sessions
+
+- zellij
+- zellij-runner
+
+#### Editor
+
+- neovim
+
+#### Docker
+
+- lazydocker
+- dlnav (_custom function that tails the log of a docker compose service in lnav_)
+- docker-volume-snapshot
+
+> Programming
 >
 > - python
 > - java
 > - rust
-> - tcolor
-> - zellij-runner
+> - pnpm (_node package manager_)
+> - pdm (_python venv_)
 > - spring-initializr-cli
-> - docker-volume-snapshot
-> - dysk
 
 _Checkout `install.sh` for all packages_
-
-> **Custom Functions in `conf.fish`**
->
-> - pdm
-> - dlnav
 
 ## Neovim Plugins
 
