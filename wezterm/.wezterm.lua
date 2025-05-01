@@ -42,7 +42,7 @@ return {
 	default_cursor_style = "BlinkingBlock",
 	disable_default_key_bindings = true,
 	keys = {
-		{ key = "V", mods = "CTRL", action = wezterm.action.PasteFrom("Clipboard") },
+		{ key = "v", mods = "CTRL", action = wezterm.action.PasteFrom("Clipboard") },
 		{
 			key = "F11",
 			action = wezterm.action.ToggleFullScreen,
