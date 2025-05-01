@@ -7,7 +7,7 @@ wezterm.on("gui-startup", function()
 
 	local width = screen.width * 0.85
 	local height = screen.height * 0.85
-	window:gui_window():set_position((screen.width - width) / 2, (screen.height - height) * 0.9 / 2)
+	window:gui_window():set_position((screen.width - width) / 2, (screen.height - height) * 0.775 / 2)
 	window:gui_window():set_inner_size(width, height)
 end)
 
