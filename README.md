@@ -1,15 +1,23 @@
+![image](https://github.com/user-attachments/assets/c0d96ba9-ff39-42cb-bd2c-80290f6e8884)
+
+![image](https://github.com/user-attachments/assets/3a34e958-1d7c-4160-baca-1e2cf74550db)
+
+![image](https://github.com/user-attachments/assets/2f6e32dc-1f7d-4987-bcff-33c6d987f3f4)
+
+![image](https://github.com/user-attachments/assets/b2a45eaa-30e3-491e-951c-44c913b08bb9)
+
 <div align="center">
 
-# <img src="https://github.com/user-attachments/assets/93df6e6d-31d1-486c-8dcb-557169d54139" alt="docker-svgrepo-com" style="width: 25px; height: 25px;"> &nbsp; dotfyles
+# <img src="https://github.com/user-attachments/assets/93df6e6d-31d1-486c-8dcb-557169d54139" alt="docker-svgrepo-com" style="width: 30px; height: 30px;"> dotfyles
 
 </div>
 
 > [!Note]
 >
 > All colorschemes and themes are specifically set according to the theme set in the `wezterm` config.
-
-- `wezterm` config is intended to be used on a windows system.
-- `fish` set as the default shell.
+>
+> - `wezterm` config is intended to be used on a windows system.
+> - `fish` set as the default shell.
 
 > [!Important]
 >
