@@ -17,6 +17,7 @@ alias fd fdfind
 alias zj zellij
 alias zjr zellij-runner
 alias df dysk
+alias edge "/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe"
 
 # Environment Variables
 set EDITOR vim
