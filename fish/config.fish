@@ -17,7 +17,6 @@ alias fd fdfind
 alias zj zellij
 alias zjr zellij-runner
 alias df dysk
-alias edge "/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe"
 
 # Environment Variables
 set EDITOR vim
@@ -60,6 +59,16 @@ function dlnav
     else
         docker-compose logs -f $argv | lnav
     end
+end
+
+set -x EDGE_PATH "/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
+
+# Function to open files in Edge browser from WSL
+function edge
+    set filename $argv[1]
+    set fullpath (pwd)"/"$filename
+    set wslpath "\\\\wsl.localhost\\Ubuntu"(string replace -ar '/' '\\\\\\\\' "$fullpath")
+    $EDGE_PATH $wslpath
 end
 
 # Remove Welcome Message
