@@ -119,6 +119,9 @@ wget -q -P ~/Downloads "https://github.com/bcicen/tcolors/releases/download/v${t
 chmod +x "tcolors-${tcolors_VERSION}-linux-amd64"
 sudo mv "tcolors-${tcolors_VERSION}-linux-amd64" /usr/local/bin/tcolors
 
+# Others
+sudo apt install -y chafa ffmpeg
+
 # Programming Languages and Packages
 
 # Git
