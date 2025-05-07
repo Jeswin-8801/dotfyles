@@ -153,6 +153,10 @@ if [ -z "$NODE_VER" ]; then
   sudo npm install -g npm@latest # update to the latest version of npm
 fi
 
+# nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+nvm install 24
+
 # NPM Cli Tools
 sudo npm install --global \
   tldr \

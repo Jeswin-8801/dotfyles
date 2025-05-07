@@ -45,4 +45,17 @@ which_key.add({
     desc = "Git Diff",
     mode = { "n" },
   },
+  -- calendar.vim
+  {
+    "<leader>tc",
+    desc = "Calendar",
+    icon = "",
+  },
+  {
+    "<leader>tcC",
+    "<cmd>Calendar -view=clock<CR>",
+    icon = "󰃰",
+    desc = "Toggle Clock View!",
+  },
+  -- -------
 })

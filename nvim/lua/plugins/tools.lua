@@ -170,4 +170,23 @@ return {
       },
     },
   },
+
+  -- Calendar
+  {
+    "itchyny/calendar.vim",
+    -- NOTE: The main '<leader>tc' keymap is configured in 'config/keymaps.lua'
+    keys = {
+      {
+        "<leader>tcc",
+        "<cmd>Calendar<CR>",
+        desc = "Toggle Calendar!",
+      },
+      {
+        "<leader>tcy",
+        "<cmd>Calendar -view=year<CR>",
+        desc = "Show Year Calendar",
+      },
+      -- NOTE: Toggle clock keymap is placed in 'config/keymaps.lua'
+    },
+  },
 }

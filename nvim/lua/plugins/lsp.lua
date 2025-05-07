@@ -34,7 +34,9 @@ return {
         -- are available the tool will be updated. This setting does not
         -- affect :MasonToolsUpdate or :MasonToolsInstall.
         -- Default: false
-        auto_update = false,
+        auto_update = true,
+        -- Default: true
+        run_on_start = true,
         -- set a delay (in ms) before the installation starts. This is only
         -- effective if run_on_start is set to true.
         -- e.g.: 5000 = 5 second delay, 10000 = 10 second delay, etc...
@@ -187,50 +189,57 @@ return {
         end
       end,
     },
+  },
 
-    -- Java
-    {
-      "nvim-java/nvim-java",
-      dependencies = {
-        {
-          "neovim/nvim-lspconfig",
-          opts = {
-            internal = {
-              log_debug = true,
-            },
-            servers = {
-              jdtls = {
-                settings = {
-                  java = {
-                    signatureHelp = { enabled = true },
-                    import = { enabled = true },
-                    rename = { enabled = true },
-                  },
+  -- Java
+  {
+    "nvim-java/nvim-java",
+    dependencies = {
+      {
+        "neovim/nvim-lspconfig",
+        opts = {
+          internal = {
+            log_debug = true,
+          },
+          servers = {
+            jdtls = {
+              settings = {
+                java = {
+                  signatureHelp = { enabled = true },
+                  import = { enabled = true },
+                  rename = { enabled = true },
                 },
               },
             },
-            setup = {
-              jdtls = function()
-                require("java").setup({
-                  jdk = {
-                    auto_install = false,
-                  },
-                  root_markers = {
-                    "settings.gradle",
-                    "settings.gradle.kts",
-                    "pom.xml",
-                    "build.gradle",
-                    "mvnw",
-                    "gradlew",
-                    "build.gradle",
-                    "build.gradle.kts",
-                  },
-                })
-              end,
-            },
+          },
+          setup = {
+            jdtls = function()
+              require("java").setup({
+                jdk = {
+                  auto_install = false,
+                },
+                root_markers = {
+                  "settings.gradle",
+                  "settings.gradle.kts",
+                  "pom.xml",
+                  "build.gradle",
+                  "mvnw",
+                  "gradlew",
+                  "build.gradle",
+                  "build.gradle.kts",
+                },
+              })
+            end,
           },
         },
       },
     },
+  },
+
+  -- typescript
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
   },
 }

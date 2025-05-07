@@ -79,6 +79,9 @@ if status --is-interactive
     neofetch
 end
 
+# nvm use node lts
+nvm use node >/dev/null
+
 # pnpm
 set -gx PNPM_HOME "/home/jeswins/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
