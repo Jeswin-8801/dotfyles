@@ -2,7 +2,7 @@
 
 sudo apt update
 sudo apt -y upgrade
-sudo apt install -y -y build-essential snapd
+sudo apt install -y build-essential
 sudo apt -y autoremove
 
 # fish
@@ -21,6 +21,7 @@ maven_VERSION="3.9.9"
 spring_VERSION="3.4.2"
 zellij_VERSION="v0.42.2"
 tcolors_VERSION="0.3.3"
+lnav_VERSION="0.12.4"
 
 # btop
 echo "Installing btop..."
@@ -52,7 +53,9 @@ sudo apt install -y ripgrep
 
 # lnav
 echo "Installing lnav..."
-sudo snap install lnav
+wget -q -P ~/Downloads "https://github.com/tstack/lnav/releases/download/v${lnav_VERSION}/lnav-${lnav_VERSION}-linux-musl-x86_64.zip"
+sudo unzip lnav-${lnav_VERSION}-linux-musl-x86_64.zip -d /opt
+sudo ln -s /opt/${lnav_VERSION}/lnav /usr/local/bin/lnav
 
 # lsd
 echo "Installing lsd..."
@@ -179,7 +182,7 @@ sudo tar -xzf ~/Downloads/spring-boot-cli-"${spring_VERSION}"-bin.tar.gz -C /opt
 sudo ln -s /opt/spring-"${spring_VERSION}"/bin/spring /usr/local/bin/spring
 
 # Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Rust CLI Tools
 cargo install \
