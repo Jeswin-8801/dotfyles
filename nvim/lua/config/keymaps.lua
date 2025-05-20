@@ -23,10 +23,17 @@ which_key.add({
   {
     "<leader>sr",
     desc = "Search/Replace",
-    icon = "㏛🗁",
+    icon = "㏛󰥨",
     mode = { "n", "v" },
   },
-  -- -------
+  -- multilinecursors.nvim
+  {
+    "<Leader>m",
+    "<cmd>MCstart<cr>",
+    desc = "Multiline Cursor",
+    icon = "󰗧",
+    mode = { "v", "n" },
+  },
   {
     "<leader>tg",
     "<cmd>Grapple toggle<CR>",

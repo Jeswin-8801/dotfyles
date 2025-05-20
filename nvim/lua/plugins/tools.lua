@@ -198,4 +198,16 @@ return {
       -- NOTE: Toggle clock keymap is placed in 'config/keymaps.lua'
     },
   },
+
+  -- Multiline Cursor
+  {
+    "smoka7/multicursors.nvim",
+    -- NOTE: The main '<leader>m' keymap is configured in 'config/keymaps.lua'
+    event = "VeryLazy",
+    dependencies = {
+      "nvimtools/hydra.nvim",
+    },
+    opts = {},
+    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+  },
 }
