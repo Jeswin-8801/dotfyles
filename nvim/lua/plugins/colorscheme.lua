@@ -82,10 +82,10 @@ return {
             rosewater = "#DFD3C3",
             lavender = "#F4E7E1",
             red = "#f38ba8", -- exit, echo, return
-            peach = "#ffc8b2",
+            peach = "#f7dcd1",
             yellow = "#FFF2B5",
             pink = "#FFE2D9",
-            green = "#d6efd3", -- strings
+            green = "#d2f6cd", -- strings
             teal = "#FBFCCB", -- diagnostics
             blue = "#b4befe", -- main: funtion calls
             mauve = "#9e84f4", -- keywords

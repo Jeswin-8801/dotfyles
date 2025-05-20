@@ -136,4 +136,9 @@ return {
       },
     },
   },
+
+  -- screen saver
+  {
+    "tamton-aquib/zone.nvim",
+  },
 }

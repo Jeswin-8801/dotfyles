@@ -51,11 +51,4 @@ which_key.add({
     desc = "Calendar",
     icon = "",
   },
-  {
-    "<leader>tcC",
-    "<cmd>Calendar -view=clock<CR>",
-    icon = "󰃰",
-    desc = "Toggle Clock View!",
-  },
-  -- -------
 })

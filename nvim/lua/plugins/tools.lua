@@ -192,10 +192,19 @@ return {
       },
       {
         "<leader>tcy",
-        "<cmd>Calendar -view=year<CR>",
+        function()
+          require("notify")(" Calendar might take a few seconds to fully generate")
+          vim.defer_fn(function()
+            vim.cmd("Calendar -view=year")
+          end, 1000)
+        end,
         desc = "Show Year Calendar",
       },
-      -- NOTE: Toggle clock keymap is placed in 'config/keymaps.lua'
+      {
+        "<leader>tcC",
+        "<cmd>Calendar -view=clock<CR>",
+        desc = "Toggle Clock!",
+      },
     },
   },
 
