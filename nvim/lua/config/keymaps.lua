@@ -26,13 +26,6 @@ which_key.add({
     icon = "㏛🗁",
     mode = { "n", "v" },
   },
-  {
-    "<leader>tss",
-    "<cmd>Spectre<CR>",
-    desc = "SpectreToggle!",
-    icon = "㏛",
-    mode = { "n" },
-  },
   -- -------
   {
     "<leader>tg",

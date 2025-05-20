@@ -101,7 +101,16 @@ return {
           })
         end,
         mode = { "n", "v" },
-        desc = "Search current under cursor",
+        desc = "Search current word under cursor",
+      },
+      {
+        "<leader>srv",
+        function()
+          local grug = require("grug-far")
+          grug.open({ visualSelectionUsage = "operate-within-range" })
+        end,
+        mode = { "n", "v" },
+        desc = "Search inside current visual selection",
       },
     },
   },

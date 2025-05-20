@@ -26,9 +26,20 @@ return {
 	color_scheme = "Rebecca (base16)",
 	enable_tab_bar = false,
 	font_size = 11.0,
-	font = wezterm.font_with_fallback({
-		{ family = "JetBrainsMono Nerd Font", weight = "Light", stretch = "Normal", style = "Normal" },
-	}),
+	font = wezterm.font("JetBrains Mono", { weight = "Regular", stretch = "Normal", style = "Normal" }),
+
+	font_rules = {
+		{
+			intensity = "Bold",
+			italic = false,
+			font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Normal" }),
+		},
+		{
+			intensity = "Bold",
+			italic = true,
+			font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Italic" }),
+		},
+	},
 
 	window_background_image = "\\\\wsl.localhost\\Ubuntu\\home\\jeswins\\GitHub\\dotfyles\\Images\\eva_01_retro_blurred.png",
 	window_background_image_hsb = {

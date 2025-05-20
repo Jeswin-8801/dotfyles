@@ -20,6 +20,32 @@ return {
               CmpBorder = { fg = color.surface2 },
               Pmenu = { bg = color.none },
               TelescopeBorder = { link = "FloatBorder" },
+              CmpItemKindSnippet = { fg = color.base, bg = color.mauve },
+              CmpItemKindKeyword = { fg = color.base, bg = color.red },
+              CmpItemKindText = { fg = color.base, bg = color.teal },
+              CmpItemKindMethod = { fg = color.base, bg = color.blue },
+              CmpItemKindConstructor = { fg = color.base, bg = color.blue },
+              CmpItemKindFunction = { fg = color.base, bg = color.blue },
+              CmpItemKindFolder = { fg = color.base, bg = color.blue },
+              CmpItemKindModule = { fg = color.base, bg = color.blue },
+              CmpItemKindConstant = { fg = color.base, bg = color.peach },
+              CmpItemKindField = { fg = color.base, bg = color.green },
+              CmpItemKindProperty = { fg = color.base, bg = color.green },
+              CmpItemKindEnum = { fg = color.base, bg = color.green },
+              CmpItemKindUnit = { fg = color.base, bg = color.green },
+              CmpItemKindClass = { fg = color.base, bg = color.yellow },
+              CmpItemKindVariable = { fg = color.base, bg = color.flamingo },
+              CmpItemKindFile = { fg = color.base, bg = color.blue },
+              CmpItemKindInterface = { fg = color.base, bg = color.yellow },
+              CmpItemKindColor = { fg = color.base, bg = color.red },
+              CmpItemKindReference = { fg = color.base, bg = color.red },
+              CmpItemKindEnumMember = { fg = color.base, bg = color.red },
+              CmpItemKindStruct = { fg = color.base, bg = color.blue },
+              CmpItemKindValue = { fg = color.base, bg = color.peach },
+              CmpItemKindEvent = { fg = color.base, bg = color.blue },
+              CmpItemKindOperator = { fg = color.base, bg = color.blue },
+              CmpItemKindTypeParameter = { fg = color.base, bg = color.blue },
+              CmpItemKindCopilot = { fg = color.base, bg = color.teal },
             }
           end,
         },
@@ -42,21 +68,40 @@ return {
             green = "#87A35E",
           },
           mocha = {
-            text = "#E4E1FA",
+            -- ⬇️
+            -- https://htmlcolorcodes.com/color-picker/
+            -- https://catbbrew.com/
+            -- ⬆️
+
             surface2 = "#535763",
             surface1 = "#525252", -- Line Numbers, Current Line highlight in all non-editor pannels
             surface0 = "#20202b", -- Code Block highlight default, Current Line Highlight
-            overlay2 = "#737774", -- Comments color
-            overlay1 = "#838ba7",
+            text = "#E4E1FA",
+
+            -- mint = "#B5FCCD",
+            rosewater = "#DFD3C3",
+            lavender = "#F4E7E1",
+            red = "#f38ba8", -- exit, echo, return
+            peach = "#ffc8b2",
+            yellow = "#FFF2B5",
+            pink = "#FFE2D9",
+            green = "#d6efd3", -- strings
+            teal = "#FBFCCB", -- diagnostics
+            blue = "#b4befe", -- main: funtion calls
+            mauve = "#9e84f4", -- keywords
+            flamingo = "#be5046",
+            maroon = "#e06c75",
+            sky = "#87ccdc", -- operator, operator/special character diagnostics
+
+            subtext1 = "#F4E1FA",
+            subtext0 = "#A6ADC8",
+            overlay2 = "#9399B2", -- Comments, Unused Var
+            overlay1 = "#7F849C",
+            overlay0 = "#6C7086",
+
             base = "#0a0b16", -- editor background, File Explorer search border surround
             mantle = "#101014", -- Background colors for: File Explorer, Lazy Pannel, Floating Windows, Status bar bottom
             crust = "#1F2131", -- File Explorer and Editor Line separator
-            mauve = "#916CBD",
-            mint = "#B5FCCD",
-            yellow = "#FFF2B5",
-            pink = "#FFE2D9",
-            green = "#B5D7B4",
-            peach = "#FBB288",
           },
         },
         styles = {
