@@ -49,10 +49,16 @@
 
 > [!Important]
 > Make sure to check if your WSL distro has the correct name by checking:
+>
 > ```shell
 > rg "Ubuntu" wezterm/.wezterm.lua
 > ```
+>
 > Change if needed
+
+- Also make sure you have the Bold, Italic and the Regular versions of the Nerd Font Installed
+
+> Change the font in `.wezterm.lua`
 
 ## Installed Packages
 
