@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ![ -d ~/Downloads ]; then
+  echo "Creating dir ~/Downloads"
+  mkdir -p ~/Downloads
+fi
+
 sudo apt update
 sudo apt -y upgrade
 sudo apt install -y build-essential
@@ -13,23 +18,19 @@ sudo apt install -y fish zip
 sudo chsh -s /usr/local/bin/fish # set as default shell
 
 # VERSIONS
-btop_VERSION="v1.4.0"
 pandoc_VERSION="3.6.3"
-neovim_VERSION="v0.10.4"
 delta_VERSION="0.18.2"
 maven_VERSION="3.9.9"
 spring_VERSION="3.4.2"
 zellij_VERSION="v0.42.2"
 tcolors_VERSION="0.3.3"
+neovim_VERSION="v0.11.1"
 lnav_VERSION="0.12.4"
+superfile_VERSION="v1.2.1"
 
 # btop
 echo "Installing btop..."
-wget -q -P ~/Downloads "https://github.com/aristocratos/btop/releases/download/${btop_VERSION}/btop-x86_64-linux-musl.tbz"
-sudo tar -xjf ~/Downloads/btop-x86_64-linux-musl.tbz -C /opt
-cd /opt/btop
-sudo make install
-cd ~
+sudo apt install -y btop
 
 # batcat
 echo "Installing batcat..."
@@ -70,9 +71,11 @@ sudo dpkg -i ~/Downloads/pandoc-"${pandoc_VERSION}"-1-amd64.deb
 echo "Installing neofetch..."
 sudo apt install -y neofetch
 
-# superfile
-echo "Installing superfile..."
-bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
+# Superfile
+echo "Installing spf..."
+wget -q -P ~/Downloads "https://github.com/yorukot/superfile/releases/download/${superfile_VERSION}/superfile-linux-${superfile_VERSION}-amd64.tar.gz"
+sudo tar --strip-components=2 -xzf "~/Downloads/superfile-linux-${superfile_VERSION}-amd64.tar.gz" -C /opt
+sudo ln -s /opt/superfile-linux-${superfile_VERSION}-amd64/spf /usr/local/bin/spf
 
 # cht.sh
 echo "Installing cht.sh..."
