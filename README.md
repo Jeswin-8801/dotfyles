@@ -27,9 +27,27 @@
 > rg "[\/\\\\]+home[\/\\\\]+jeswins" --hidden
 > ```
 
-> Refer `win-terminal/settings.json` for Windows Terminal settings in case you prefer using it instead
->
 > (Modify paths to images if necessary)
+
+## Installation
+
+- Install `Wezterm` in windows
+
+- In WSL, clone the repo and execute:
+
+```bash
+./install.sh
+```
+
+- Restart Session to see the changes
+
+- Place the wezterm config file in the Windows user location
+
+> can be done using the below command but modify the path before executing
+>
+> ```bash
+> cp wezterm/.wezterm.lua /mnt/c/Users/Lupin/
+> ```
 
 ## Installed Packages
 

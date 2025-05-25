@@ -1,6 +1,6 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    oh-my-posh init fish --config /home/jeswins/GitHub/dotfyles/oh-my-posh/themes/eva.omp.json | source
+    oh-my-posh init fish --config /home/jeswins/.config/oh-my-posh/themes/eva.omp.json | source
 end
 
 # Aliases

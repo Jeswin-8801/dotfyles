@@ -1,21 +1,51 @@
 #!/bin/bash
 
-if ![ -d ~/Downloads ]; then
-  echo "Creating dir ~/Downloads"
-  mkdir -p ~/Downloads
+if [ "$EUID" -eq 0 ]; then
+  echo "This script is not meant to be run as root"
+  exit
 fi
 
+USER_HOME_DIR="/home/$(sudo who am i | awk '{print $1}')"
+DOWNLOADS_DIR="${USER_HOME_DIR}/Downloads"
+LOGFILE="script.log"
+
+if ! [ -d "$DOWNLOADS_DIR" ]; then
+  echo "Creating dir '$DOWNLOADS_DIR/' if not Exists"
+  mkdir -p $DOWNLOADS_DIR
+fi
+
+if ! [ -d ~/.config ]; then
+  echo "Creating dir '~/.config/' if not Exists"
+  mkdir -p ~/.config
+fi
+
+# Save original stdout to FD 3
+exec 3>&1
+
+# Redirect stdout and stderr to log file
+exec >"$LOGFILE" 2>&1
+
+print_status() {
+  if [ $1 -eq 0 ]; then
+    echo "  ✅  '$2' succeeded." >&3
+  else
+    echo "  ❗ '$2' failed!" >&3
+  fi
+  echo ""
+}
+
+echo -e "\nUpdating and Upgrading Packages..." >&3
 sudo apt update
 sudo apt -y upgrade
 sudo apt install -y build-essential
 sudo apt -y autoremove
 
 # fish
+echo -e "\nAdding fish apt repo and installing from it..." >&3
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt-add-repository universe -y
 sudo apt update
 sudo apt install -y fish zip
-sudo chsh -s /usr/local/bin/fish # set as default shell
 
 # VERSIONS
 pandoc_VERSION="3.6.3"
@@ -29,139 +59,166 @@ lnav_VERSION="0.12.4"
 superfile_VERSION="v1.2.1"
 
 # btop
-echo "Installing btop..."
+# Use echo >&3 to print only to the console
+echo -e "\nInstalling btop..." >&3
 sudo apt install -y btop
+print_status $? "Install btop"
 
 # batcat
-echo "Installing batcat..."
+echo -e "\nInstalling batcat..." >&3
 sudo apt install -y bat
+print_status $? "Install bat"
 
 # fzf
-echo "Installing fzf..."
+echo -e "\nInstalling fzf..." >&3
 sudo apt install -y fzf
+print_status $? "Install fzf"
 
 # fd-find
-echo "Installing fd..."
+echo -e "\nInstalling fd..." >&3
 sudo apt install -y fd-find
+print_status $? "Install fd-find"
 
 # duf
-echo "Installing duf..."
+echo -e "\nInstalling duf..." >&3
 sudo apt install -y duf
+print_status $? "Install duf"
 
 # ripgrep
-echo "Installing ripgrep..."
+echo -e "\nInstalling ripgrep..." >&3
 sudo apt install -y ripgrep
+print_status $? "Install ripgrep"
 
 # lnav
-echo "Installing lnav..."
-wget -q -P ~/Downloads "https://github.com/tstack/lnav/releases/download/v${lnav_VERSION}/lnav-${lnav_VERSION}-linux-musl-x86_64.zip"
-sudo unzip lnav-${lnav_VERSION}-linux-musl-x86_64.zip -d /opt
-sudo ln -s /opt/${lnav_VERSION}/lnav /usr/local/bin/lnav
+echo -e "\nInstalling lnav..." >&3
+wget -q -P "$DOWNLOADS_DIR" "https://github.com/tstack/lnav/releases/download/v${lnav_VERSION}/lnav-${lnav_VERSION}-linux-musl-x86_64.zip"
+print_status $? "Download lnav zipped binary from GitHub"
+sudo unzip "$DOWNLOADS_DIR/lnav-${lnav_VERSION}-linux-musl-x86_64.zip" -d /opt
+print_status $? "Unzip lnav binary"
+sudo ln -s /opt/lnav-${lnav_VERSION}/lnav /usr/local/bin/lnav
+print_status $? "Create lnav symbolic link"
 
 # lsd
-echo "Installing lsd..."
+echo -e "\nInstalling lsd..." >&3
 sudo apt install -y lsd
+print_status $? "Install lsd"
 
 # pandoc
-echo "Installing pandoc..."
-wget -q -P ~/Downloads "https://github.com/jgm/pandoc/releases/download/${pandoc_VERSION}/pandoc-${pandoc_VERSION}-1-amd64.deb"
-sudo dpkg -i ~/Downloads/pandoc-"${pandoc_VERSION}"-1-amd64.deb
+echo -e "\nInstalling pandoc..." >&3
+wget -q -P "$DOWNLOADS_DIR" "https://github.com/jgm/pandoc/releases/download/${pandoc_VERSION}/pandoc-${pandoc_VERSION}-1-amd64.deb"
+print_status $? "Download pandoc binary from GitHub"
+sudo dpkg -i "$DOWNLOADS_DIR/pandoc-${pandoc_VERSION}-1-amd64.deb"
+print_status $? "Install pandoc"
 
 # neofetch
-echo "Installing neofetch..."
+echo -e "\nInstalling neofetch..." >&3
 sudo apt install -y neofetch
+print_status $? "Install neofetch"
 
 # Superfile
-echo "Installing spf..."
-wget -q -P ~/Downloads "https://github.com/yorukot/superfile/releases/download/${superfile_VERSION}/superfile-linux-${superfile_VERSION}-amd64.tar.gz"
-sudo tar --strip-components=2 -xzf "~/Downloads/superfile-linux-${superfile_VERSION}-amd64.tar.gz" -C /opt
+echo -e "\nInstalling spf..." >&3
+wget -q -P "$DOWNLOADS_DIR" "https://github.com/yorukot/superfile/releases/download/${superfile_VERSION}/superfile-linux-${superfile_VERSION}-amd64.tar.gz"
+print_status $? "Download spf zipped binary from GitHub"
+sudo tar --strip-components=2 -xzf "$DOWNLOADS_DIR/superfile-linux-${superfile_VERSION}-amd64.tar.gz" -C /opt
+print_status $? "Unzip spf binary"
 sudo ln -s /opt/superfile-linux-${superfile_VERSION}-amd64/spf /usr/local/bin/spf
+print_status $? "Create spf symbolic link"
 
 # cht.sh
-echo "Installing cht.sh..."
+echo -e "\nInstalling cht.sh..." >&3
 curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
+print_status $? "Install cht.sh"
 
-# lazygit
-echo "Installing lazygit..."
+# Lazygit
+echo -e "\nInstalling lazygit..." >&3
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazygit.tar.gz lazygit
-sudo install lazygit -D -t /usr/local/bin/
+wget -q -P "$DOWNLOADS_DIR" "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+print_status $? "Download lazygit zipped binary from GitHub"
+sudo tar -xzf "$DOWNLOADS_DIR/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" -C /opt
+print_status $? "Unzip lazygit binary"
+sudo ln -s /opt/lazygit /usr/local/bin/lazygit
+print_status $? "Create lazygit symbolic link"
 
 # lazydocker
-echo "Installing lazydocker..."
+echo -e "\nInstalling lazydocker..." >&3
+export DIR=/usr/local/bin
+cd "$DOWNLOADS_DIR"
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+print_status $? "Install lazydocker"
+cd -
 
 # delta
-echo "Installing delta..."
-wget -q -P ~/Downloads "https://github.com/dandavison/delta/releases/download/${delta_VERSION}/git-delta_${delta_VERSION}_amd64.deb"
-sudo dpkg -i ~/Downloads/git-delta_"${delta_VERSION}"_amd64.deb
+echo -e "\nInstalling delta..." >&3
+wget -q -P "$DOWNLOADS_DIR" "https://github.com/dandavison/delta/releases/download/${delta_VERSION}/git-delta_${delta_VERSION}_amd64.deb"
+print_status $? "Download delta binary from GitHub"
+sudo ar -xzf "$DOWNLOADS_DIR/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" -C /opt
+sudo dpkg -i $DOWNLOADS_DIR/git-delta_"${delta_VERSION}"_amd64.deb
+print_status $? "Install delta"
 
 # neovim
-echo "Installing neovim..."
-wget -q -P ~/Downloads "https://github.com/neovim/neovim/releases/download/${neovim_VERSION}/nvim-linux-x86_64.tar.gz"
-sudo tar -xzf ~/Downloads/nvim-linux-x86_64.tar.gz -C /opt
-cd /opt/nvim-linux-x86_64
+echo -e "\nInstalling neovim..." >&3
+wget -q -P "$DOWNLOADS_DIR" "https://github.com/neovim/neovim/releases/download/${neovim_VERSION}/nvim-linux-x86_64.tar.gz"
+print_status $? "Download neovim zipped binary from GitHub"
+sudo tar -xzf $DOWNLOADS_DIR/nvim-linux-x86_64.tar.gz -C /opt
+print_status $? "Unzip neovim binary"
 sudo ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
+print_status $? "Create neovim symbolic link"
 sudo cp /opt/nvim-linux-x86_64/share/man/man1/nvim.1 /usr/share/man/man1
 sudo mandb
+print_status $? "Populate neovim man pages"
 
 # oh-my-posh
-echo "Installing oh-my-posh..."
+echo -e "\nInstalling oh-my-posh..." >&3
 curl -s https://ohmyposh.dev/install.sh | sudo bash -s -- -d /usr/local/bin
-
-# oh-my-tmux
-sudo git clone "https://github.com/gpakosz/.tmux.git" /opt/oh-my-tmux
-mkdir -p .config/tmux
-sudo ln -s /opt/oh-my-tmux/.tmux.conf ~/.config/tmux/tmux.conf
-cp /opt/oh-my-tmux/.tmux.conf.local ~/.config/tmux/tmux.conf.local
+print_status $? "Install oh-my-posh"
 
 # Zellij
-wget -q -P ~/Downloads "https://github.com/zellij-org/zellij/releases/download/${zellij_VERSION}/zellij-x86_64-unknown-linux-musl.tar.gz"
-sudo tar -xzf ~/Downloads/zellij-x86_64-unknown-linux-musl.tar.gz -C /usr/local/bin
+echo -e "\nInstalling Zellij..." >&3
+wget -q -P "$DOWNLOADS_DIR" "https://github.com/zellij-org/zellij/releases/download/${zellij_VERSION}/zellij-x86_64-unknown-linux-musl.tar.gz"
+print_status $? "Download zellij zipped binary from GitHub"
+sudo tar -xzf $DOWNLOADS_DIR/zellij-x86_64-unknown-linux-musl.tar.gz -C /usr/local/bin
+print_status $? "Unzip neovim binary to /usr/local/bin"
 
 # Tcolor
-wget -q -P ~/Downloads "https://github.com/bcicen/tcolors/releases/download/v${tcolors_VERSION}/tcolors-${tcolors_VERSION}-linux-amd64"
-chmod +x "tcolors-${tcolors_VERSION}-linux-amd64"
-sudo mv "tcolors-${tcolors_VERSION}-linux-amd64" /usr/local/bin/tcolors
+echo -e "\nInstalling tcolor..." >&3
+wget -q -P "$DOWNLOADS_DIR" "https://github.com/bcicen/tcolors/releases/download/v${tcolors_VERSION}/tcolors-${tcolors_VERSION}-linux-amd64"
+print_status $? "Download tcolor zipped binary from GitHub"
+chmod +x "$DOWNLOADS_DIR/tcolors-${tcolors_VERSION}-linux-amd64"
+sudo mv "$DOWNLOADS_DIR/tcolors-${tcolors_VERSION}-linux-amd64" /usr/local/bin/tcolors
+print_status $? "Install tcolor"
 
 # Others
+echo -e "\nInstalling chafa, ffmpeg..." >&3
 sudo apt install -y chafa ffmpeg
+print_status $? "Install chafa, ffmpef"
 
 # Programming Languages and Packages
 
-# Git
-git config --global core.autocrlf input
-git config --global core.eol lf
-git config --global core.pager delta
-git config --global interactive.diffFilter "delta --color-only"
-git config --global delta.navigate true
-git config --global delta.dark true
-git config --global delta.side-by-side true
-git config --global delta.line-numbers true
-git config --global delta.minus-style "syntax #450a15"
-git config --global delta.minus-emph-style "syntax #ff0000"
-git config --global delta.plus-style "syntax #004010"
-git config --global delta.plus-emph-style "syntax #ff8134"
-git config --global delta.hunk-header-style syntax
-git config --global delta.interactive.keep-plus-minus-markers false
-git config --global merge.conflictstyle zdiff3
-
 # Python
+echo -e "\nInstalling python3-venv..." >&3
 sudo apt install -y python3-venv
+print_status $? "Install python3-venv"
 
 # nodejs
 if [ -z "$NODE_VER" ]; then
-  echo "Nodejs is not installed."
-  echo "Installing LTS version of Nodejs..."
+  echo -e "\nNodejs is not installed." >&3
+  echo "Installing LTS version of Nodejs..." >&3
   curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
   sudo apt-get install -y nodejs
+  print_status $? "Install nodejs"
   sudo npm install -g npm@latest # update to the latest version of npm
+  print_status $? "Install npm"
 fi
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-nvm install 24
+nvm install --lts
+nvm use --lts
+
+# pnpm
+echo -e "\nInstalling pnpm..." >&3
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+print_status $? "Install pnpm"
 
 # NPM Cli Tools
 sudo npm install --global \
@@ -172,20 +229,32 @@ sudo npm install --global \
   iponmap
 
 # Maven
-wget -q -P ~/Downloads https://dlcdn.apache.org/maven/maven-3/"${maven_VERSION}"/binaries/apache-maven-"${maven_VERSION}"-bin.tar.gz
-sudo tar -xzf ~/Downloads/apache-maven-"${maven_VERSION}"-bin.tar.gz -C /opt
+echo -e "\nInstalling maven..." >&3
+wget -q -P "$DOWNLOADS_DIR" https://dlcdn.apache.org/maven/maven-3/"${maven_VERSION}"/binaries/apache-maven-"${maven_VERSION}"-bin.tar.gz
+print_status $? "Download tcolor zipped binary from GitHub"
+sudo tar -xzf $DOWNLOADS_DIR/apache-maven-"${maven_VERSION}"-bin.tar.gz -C /opt
+print_status $? "Unzip maven binary"
 sudo ln -s /opt/apache-maven-"${maven_VERSION}" /usr/local/bin/apache-maven
+print_status $? "Create maven symbolic link"
 
 # Java
+echo -e "\nInstalling java-21..." >&3
 sudo apt install -y openjdk-21-jdk
+print_status $? "Install java-21"
 
 # Spring boot CLI
-wget -q -P ~/Downloads https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-cli/"${spring_VERSION}"/spring-boot-cli-"${spring_VERSION}"-bin.tar.gz
-sudo tar -xzf ~/Downloads/spring-boot-cli-"${spring_VERSION}"-bin.tar.gz -C /opt
+echo -e "\nInstalling spring-boot..." >&3
+wget -q -P "$DOWNLOADS_DIR" https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-cli/"${spring_VERSION}"/spring-boot-cli-"${spring_VERSION}"-bin.tar.gz
+print_status $? "Download spring-boot zipped binary from GitHub"
+sudo tar -xzf "$DOWNLOADS_DIR/spring-boot-cli-${spring_VERSION}-bin.tar.gz" -C /opt
+print_status $? "Unzip spring-boot binary"
 sudo ln -s /opt/spring-"${spring_VERSION}"/bin/spring /usr/local/bin/spring
+print_status $? "Create spring-boot symbolic link"
 
 # Rust
+echo -e "\nInstalling rust..." >&3
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+print_status $? "Install rust"
 
 # Rust CLI Tools
 cargo install \
@@ -198,17 +267,34 @@ cargo install \
   dysk
 
 # Zellij Runner
+echo -e "\nInstalling zellij-runner..." >&3
 cargo install zellij-runner
+print_status $? "Install zellij-runner"
 
 # Docker Volume Snapshot
+echo -e "\nInstalling docker-volume-snapshot..." >&3
 sudo curl -SL https://raw.githubusercontent.com/junedkhatri31/docker-volume-snapshot/main/docker-volume-snapshot -o /usr/local/bin/docker-volume-snapshot
+print_status $? "Install docker-volume-snapshot"
 sudo chmod +x /usr/local/bin/docker-volume-snapshot
 
 # Copy and paste all dotfiles
-rsync -av --exclude='install.sh' --exclude='README.md' * ~/.config
+echo -e "\nCopy and paste all dotfiles to ~/.config" >&3
+OUT=$(rsync -av --exclude='install.sh' --exclude='README.md' --exclude='.git/' --exclude='git/' --exclude='wezterm/' * ~/.config)
+if [ -z "$OUT" ]; then
+  echo "  ❗ Nothing copied" >&3
+else
+  echo "  ✅ Copied files successfully" >&3
+fi
 
 # Set Timezone
-timedatectl set-timezone Asia/Kolkata
+echo -e "\nSetting timezone..." >&3
+sudo ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+print_status $? "Set timezone"
 
-# Reloading terminal
-source ~/.config/fish/config.fish
+# Git
+echo -e "\nSet .gitconfig..." >&3
+cp -f git/.gitconfig ~/.gitconfig
+print_status $? "Copy .gitconfig"
+
+# Fish
+chsh -s /usr/bin/fish # set as default shell
