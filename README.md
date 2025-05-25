@@ -31,7 +31,7 @@
 
 ## Installation
 
-- Install `Wezterm` in windows
+- Install `Wezterm` on Windows
 
 - In WSL, clone the repo and execute:
 
@@ -41,13 +41,18 @@
 
 - Restart Session to see the changes
 
-- Place the wezterm config file in the Windows user location
+- Place the wezterm config file in the Windows User Home DIR
 
-> can be done using the below command but modify the path before executing
->
 > ```bash
 > cp wezterm/.wezterm.lua /mnt/c/Users/Lupin/
 > ```
+
+> [!Important]
+> Make sure to check if your WSL distro has the correct name by checking:
+> ```shell
+> rg "Ubuntu" wezterm/.wezterm.lua
+> ```
+> Change if needed
 
 ## Installed Packages
 
