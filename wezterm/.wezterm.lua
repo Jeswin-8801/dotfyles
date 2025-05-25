@@ -20,11 +20,11 @@ return {
 		},
 	},
 	-- This tells WezTerm to use the WSL domain, not the local shell
-	default_domain = "WSL:" .. distro_name,
+	-- default_domain = "WSL:" .. distro_name,
 	-- Set default domain and program
 	default_prog = { "C:\\Windows\\System32\\wsl.exe", "-d", distro_name },
 	-- Set default starting directory
-	default_cwd = [[\\wsl$\\]] .. distro_name .. [[\home\jeswins]],
+	default_cwd = [[\\wsl$\]] .. distro_name .. [[\home\jeswins]],
 
 	adjust_window_size_when_changing_font_size = false,
 	-- color_scheme = "iceberg-dark",
