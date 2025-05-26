@@ -106,4 +106,19 @@ return {
       "RainbowMultiDelim",
     },
   },
+
+  -- gitsigns set additional config
+  -- NOTE: lazyvim comes pre-configured with gitsigns
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      blame = true,
+      current_line_blame = true,
+      current_line_blame_opts = {
+        virt_text = true,
+        delay = 5000,
+        ignore_whitespace = false,
+      },
+    },
+  },
 }
