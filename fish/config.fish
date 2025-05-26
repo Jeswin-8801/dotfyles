@@ -80,7 +80,7 @@ if status --is-interactive
 end
 
 # nvm use node lts
-nvm use node >/dev/null
+nvm use --lts >/dev/null
 
 # pnpm
 set -gx PNPM_HOME "/home/jeswins/.local/share/pnpm"
@@ -102,3 +102,9 @@ set -x ZELLIJ_RUNNER_BANNERS_DIR ~/.config/zellij/banners
 
 # Zoxide
 zoxide init fish | source
+
+# Pyenv
+set -x PYENV_ROOT $HOME/.pyenv
+if test -d "$PYENV_ROOT/bin"
+    set -x PATH $PYENV_ROOT/bin $PATH
+end

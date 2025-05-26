@@ -199,6 +199,11 @@ echo -e "\nInstalling python3-venv..." >&3
 sudo apt install -y python3-venv
 print_status $? "Install python3-venv"
 
+# Pyenv
+echo -e "\nInstalling pyenv (For maintaining python versions)..." >&3
+curl https://pyenv.run | bash
+print_status $? "Install pyenv"
+
 # nodejs
 if [ -z "$NODE_VER" ]; then
   echo -e "\nNodejs is not installed." >&3
