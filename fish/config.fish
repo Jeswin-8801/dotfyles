@@ -108,3 +108,4 @@ set -x PYENV_ROOT $HOME/.pyenv
 if test -d "$PYENV_ROOT/bin"
     set -x PATH $PYENV_ROOT/bin $PATH
 end
+pyenv init - | source
