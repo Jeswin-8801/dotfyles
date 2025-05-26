@@ -206,6 +206,11 @@ echo -e "\nInstalling pyenv (For maintaining python versions)..." >&3
 curl https://pyenv.run | bash
 print_status $? "Install pyenv"
 
+# PDM
+echo -e "\nInstalling PDM..." >&3
+curl -sSL https://pdm-project.org/install-pdm.py | python3 -
+print_status $? "Install PDM"
+
 # nodejs
 if [ -z "$NODE_VER" ]; then
   echo -e "\nNodejs is not installed." >&3
