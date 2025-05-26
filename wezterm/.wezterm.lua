@@ -30,19 +30,19 @@ return {
 	-- color_scheme = "iceberg-dark",
 	color_scheme = "Rebecca (base16)",
 	enable_tab_bar = false,
-	font_size = 11.0,
-	font = wezterm.font("JetBrains Mono", { weight = "Regular", stretch = "Normal", style = "Normal" }),
+	font_size = 10.0,
+	font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Regular", stretch = "Normal", style = "Normal" }),
 
 	font_rules = {
 		{
 			intensity = "Bold",
 			italic = false,
-			font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Normal" }),
+			font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", stretch = "Normal", style = "Normal" }),
 		},
 		{
 			intensity = "Bold",
 			italic = true,
-			font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Italic" }),
+			font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", stretch = "Normal", style = "Italic" }),
 		},
 	},
 

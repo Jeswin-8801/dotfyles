@@ -13,7 +13,7 @@
         },
         {
           "background": "#965fd4",
-          "foreground": "#100e23",
+          "foreground": "#100e12",
           "leading_diamond": "\ue0b6",
           "properties": {
             "folder_separator_icon": "/",
@@ -23,6 +23,20 @@
           "template": "\ue5ff {{ .Path }}",
           "trailing_diamond": "\ue0b4",
           "type": "path"
+        },
+        {
+          "background": "#FFCF5A",
+          "foreground": "#111111",
+          "leading_diamond": " \ue0b6",
+          "properties": {
+            "display_mode": "environment",
+            "fetch_virtual_env": true,
+            "home_enabled": true
+          },
+          "style": "diamond",
+          "template": "\ue235 {{ if .Venv }}({{ .Venv }}){{ end }}",
+          "trailing_diamond": "\ue0b4",
+          "type": "python"
         },
         {
           "foreground": "#b8ff75",

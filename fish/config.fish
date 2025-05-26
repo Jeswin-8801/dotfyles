@@ -62,12 +62,13 @@ function dlnav
 end
 
 set -x EDGE_PATH "/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
+set distro_name "$(lsb_release -i | grep ID | awk -F' ' '{print$NF}')-$(lsb_release -r | grep Release | awk -F' ' '{print$NF}')"
 
 # Function to open files in Edge browser from WSL
 function edge
     set filename $argv[1]
     set fullpath (pwd)"/"$filename
-    set wslpath "\\\\wsl.localhost\\Ubuntu"(string replace -ar '/' '\\\\\\\\' "$fullpath")
+    set wslpath "\\\\wsl.localhost\\$distro_name"(string replace -ar '/' '\\\\\\\\' "$fullpath")
     $EDGE_PATH $wslpath
 end
 
