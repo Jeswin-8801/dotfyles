@@ -17,6 +17,7 @@ return {
           lua = { "stylua" },
           fish = { "fish_indent" },
           sh = { "shfmt" },
+          c = { "clang-format" },
           python = { "isort", "black" },
           javascript = { "prettierd", "prettier", stop_after_first = true },
           typescript = { "prettier" },

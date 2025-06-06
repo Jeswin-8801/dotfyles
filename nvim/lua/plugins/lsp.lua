@@ -9,6 +9,7 @@ return {
           "stylua",
           "shellcheck",
           "shfmt",
+          "clangd",
           "markdown-toc",
           "dockerls",
           "marksman",
@@ -52,6 +53,7 @@ return {
       servers = {
         bashls = {},
         dockerls = {},
+        clangd = {},
         lua_ls = {
           -- single_file_support = true,
           settings = {

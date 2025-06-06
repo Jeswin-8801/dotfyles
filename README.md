@@ -192,3 +192,13 @@ _Checkout `install.sh` for all packages_
   Disabled (1)
     ○ hologram.nvim
 ```
+
+## Additional Applications
+
+> To enable copy to clipboard from neovim in WSL, install `win32yank`.
+
+- In Powershell:
+
+```pwsh
+winget install --id=equalsraf.win32yank  -e
+```
