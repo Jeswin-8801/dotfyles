@@ -72,6 +72,26 @@ function edge
     $EDGE_PATH $wslpath
 end
 
+# Function to find a file usinf fzf and open in neovim
+function fnvim
+    set dir $argv[1]
+    if test -z "$dir"
+        set dir ~
+    end
+
+    if not test -d "$dir"
+        echo "Error: '$dir' is not a valid directory."
+        return 1
+    end
+
+    set file (find "$dir" -type f | fzf)
+    if test -n "$file"
+        nvim "$file"
+    else
+        echo "No file selected."
+    end
+end
+
 # Remove Welcome Message
 set fish_greeting
 
